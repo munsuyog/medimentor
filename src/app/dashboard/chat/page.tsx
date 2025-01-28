@@ -2,17 +2,10 @@
 
 import { useEffect, useRef, useState } from "react";
 import { 
-  Layout, 
   Sidebar as SidebarIcon, 
-  MessageSquare, 
-  Clock, 
-  FileText, 
-  Settings,
   AlertCircle,
   X,
-  User
 } from 'lucide-react';
-import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
@@ -114,27 +107,27 @@ export default function App() {
     setActiveModule(null);
   }
 
-  function sendClientEvent(message: ClientEvent): void {
-    if (dataChannel) {
-      message.event_id = message.event_id || crypto.randomUUID();
-      dataChannel.send(JSON.stringify(message));
-      setEvents((prev) => [message, ...prev]);
-    }
-  }
+//   function sendClientEvent(message: ClientEvent): void {
+//     if (dataChannel) {
+//       message.event_id = message.event_id || crypto.randomUUID();
+//       dataChannel.send(JSON.stringify(message));
+//       setEvents((prev) => [message, ...prev]);
+//     }
+//   }
 
-  function sendTextMessage(message: string): void {
-    const event: ClientEvent = {
-      type: "conversation.item.create",
-      item: {
-        type: "message",
-        role: "user",
-        content: [{ type: "input_text", text: message }],
-      },
-    };
+//   function sendTextMessage(message: string): void {
+//     const event: ClientEvent = {
+//       type: "conversation.item.create",
+//       item: {
+//         type: "message",
+//         role: "user",
+//         content: [{ type: "input_text", text: message }],
+//       },
+//     };
 
-    sendClientEvent(event);
-    sendClientEvent({ type: "response.create" });
-  }
+//     sendClientEvent(event);
+//     sendClientEvent({ type: "response.create" });
+//   }
 
   useEffect(() => {
     if (dataChannel) {

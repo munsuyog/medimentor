@@ -100,7 +100,7 @@ const menuGroups = [
 export function AppSidebar() {
   const { toggleSidebar, state } = useSidebar();
   const [isDropDownOpen, setDropDownOpen] = useState(false);
-  const [notifications, setNotifications] = useState(2); // Example notification count
+  const [notifications, _] = useState(2); // Example notification count
 
   const handleSidebarClose = () => {
     if (state === "expanded" && !isDropDownOpen) {
